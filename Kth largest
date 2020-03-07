@@ -1,0 +1,37 @@
+MEGA Brute FORCE:
+ 
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        int[] myArray = new int[k];
+            for(int i = 0; i < nums.length; i++) {
+                if (i == 0){
+                    myArray[0] = nums[i];
+                }
+                else{
+                for(int j = 0; j < myArray.length; j++){
+                    if(nums[i] >= myArray[j]){
+                        for(int z = myArray.length-1; z > j; z--){
+                            myArray[z] = myArray[z - 1];
+                        }    
+                        myArray[j] = nums[i];
+                        break;
+                    }
+                }
+                }
+            }
+        return myArray[k-1];
+    }
+}
+
+SORT and THEN return:
+
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        Arrays.sort(nums);
+        int target = nums.length - k;
+        return nums[target];
+    }
+}
+
+
+
