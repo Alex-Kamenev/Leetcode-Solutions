@@ -2,7 +2,11 @@ MEGA Brute FORCE:
  
 class Solution {
     public int findKthLargest(int[] nums, int k) {
+        if (nums == null || k < 1 || k > nums.length) {
+            throw new IllegalArgumentException("k must be between 1 and nums.length");
+        }
         int[] myArray = new int[k];
+        java.util.Arrays.fill(myArray, Integer.MIN_VALUE);
             for(int i = 0; i < nums.length; i++) {
                 if (i == 0){
                     myArray[0] = nums[i];
@@ -27,7 +31,10 @@ SORT and THEN return:
 
 class Solution {
     public int findKthLargest(int[] nums, int k) {
-        Arrays.sort(nums);
+        if (nums == null || k < 1 || k > nums.length) {
+            throw new IllegalArgumentException("k must be between 1 and nums.length");
+        }
+        java.util.Arrays.sort(nums);
         int target = nums.length - k;
         return nums[target];
     }
